@@ -1,0 +1,96 @@
+<% layout('layouts/boilerplate') %>
+
+<form class="row g-3">
+
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="email" class="form-control" id="name" name="campaign[name]">
+    </div>
+    <div class="col-md-6 " >
+        <label for="goal" class="form-label">Goal</label>
+      <select id="goal" class="form-select" name="campaign[goal]">
+        <option selected>Choose...</option>
+        <option >Visits</option>
+        <option >purchase</option>
+        <option >Install</option>
+        <option >Views</option>
+        <option >...</option>
+      </select>
+    </div>
+    <label for="">Platform</label>
+    <div class="form-check col-md-3">
+        <input class="form-check-input " type="checkbox" value="" id="google" checked>
+        <label class="form-check-label  " for="google">
+        Google
+        </label>
+    </div>
+    <div class="form-check col-md-3">
+        <input class="form-check-input" type="checkbox" value="" id="meta" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+        Meta
+        </label>
+    </div>
+    <div class="form-check col-md-3">
+        <input class="form-check-input" type="checkbox" value="" id="snapchat" checked>
+        <label class="form-check-label" for="snapchat">
+        Snapchat
+        </label>
+    </div>
+    <div class="form-check col-md-3">
+        <input class="form-check-input" type="checkbox" value="" id="tiktok" checked>
+        <label class="form-check-label" for="tiktok">
+        Tiotok
+        </label>
+    </div>
+
+   
+
+   
+
+    <div class=" col-md-6">
+        <label class="form-label" for="budget">Budget</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" id="budget" class="form-control">
+            <span class="input-group-text">0.00</span>
+        </div>
+      </div> 
+
+    <div class="col-3">
+      <label for="start_date" class="form-label">Start</label>
+      <input type="datetime-local" class="form-control" id="start_date">
+    </div>
+
+    <div class="col-3">
+      <label for="end_date" class="form-label">End</label>
+      <input type="datetime-local" class="form-control" id="end_date">
+    </div>
+    
+    
+    <div class="col-12">
+        <label for="input-group" class="form-label">Audiunce</label>
+        <div class="input-group">
+            <span class="input-group-text">Age</span>
+            <input type="text" placeholder="18-65" class="form-control">
+
+            <span class="input-group-text">First and last name</span>
+            <input type="text" aria-label="Last name" class="form-control">
+
+
+        </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Approve Terms & Conditions.
+        </label>
+      </div>
+    </div>
+    
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+  </form>
