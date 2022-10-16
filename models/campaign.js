@@ -5,15 +5,19 @@ const Schema = mongoose.Schema;
 const campaignSchema = new Schema({
     name: String,
     goal: String,
-    platform: {
-        type:String,
-        lowercase: true,
-        enum:['google','meta','snapchat','tiktok']
-    },
+    platform: Array,
     budget: Number,
     audiunce : String,
-    start_date: Date,
-    end_date: Date,
+    start_date: String,
+    end_date: String,
+    country: Array,
+    interest: Array,
+    age: Array,
+    gender: Array,
+    headline: String,
+    image: String,
+    URL: String,
+    CTA: String,
     // below data not from user
     status:{
         type: Boolean,
@@ -24,4 +28,11 @@ const campaignSchema = new Schema({
     event_A: Number,
     event_B: Number,
 })
+campaignSchema.pre('save', function() {
+    this.spend = Math.floor(Math.random() * 1500) +1
+    this.impression = Math.floor(Math.random() * 100000) +1
+    this.event_A = Math.floor(Math.random() * 500) +1
+    this.event_B = Math.floor(Math.random() * 100) +1
+});
+
 module.exports = mongoose.model('campaign',campaignSchema)

@@ -1,2 +1,77 @@
 <% layout('layouts/boilerplate') %>
-   <h1 class="">THIS IS THE SOCIAL-MEDIA PAGE</h1> 
+ <a class="btn btn-success ml-auto" href="/social-media/new">New</a>
+   <br>  
+   <div class="container">
+      <table class="table">
+         <thead>
+           <tr>
+              <th scope="col">#</th>
+              <th scope="col">Status</th>
+              <th scope="col">Name</th>
+             <th scope="col">Goal</th>
+             <th scope="col">Platforms</th>
+             <th scope="col">Budget</th>
+             <th scope="col">Spend</th>
+             <th scope="col">Impression</th>
+             <th scope="col">Event A</th>
+             <th scope="col">Event B</th>
+             <th scope="col">Actions</th>
+           </tr>
+         </thead>
+         <tbody>
+           <% for( let index = 0; index < campaigns.length; index++ ) { %>
+            <tr>
+               <th scope="row"><%= index+1 %> </th>
+               <td>
+                  <div class="form-check form-switch">
+                  <% if ( campaigns[index].status ) { %>
+                    <input class="form-check-input" type="checkbox" checked role="switch">
+                  <% } else{%>
+                        <input class="form-check-input" type="checkbox" role="switch">
+                  <% } %> 
+                  </div>           
+               </td>
+               <td><%= campaigns[index].name%> </td>
+               <td><%= campaigns[index].goal%> </td>
+               <td>
+                 <div>
+                     <% if ( campaigns[index].platform.includes('google')) { %>                        
+                        <img class=" img-fluid"width="25px" height="25px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="">
+                     <% } %>
+                     <% if ( campaigns[index].platform.includes('meta')) { %>                        
+                        <img class=" img-fluid"width="25px" height="25px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt="">
+                     <% } %>
+                     <% if ( campaigns[index].platform.includes('snapchat')) { %>                        
+                        <img class=" img-fluid"width="25px" height="25px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt="">
+                     <% } %>
+                     <% if ( campaigns[index].platform.includes('tiktok')) { %>                        
+                        <img class=" img-fluid"width="25px" height="25px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="">
+                     <% } %>
+                  </div>
+               </td>
+               
+               <td><%= campaigns[index].budget%> </td>
+               <td><%= campaigns[index].spend%> </td>
+               <td><%= campaigns[index].impression%> </td>
+               <td><%= campaigns[index].event_A%> </td>
+               <td><%= campaigns[index].event_B%> </td>
+               <td>
+
+                  <a class=" btn btn-warning" href="/social-media/<%=campaigns[index]._id%>">Show</a>
+                  <a class=" btn btn-info" href="/social-media/<%=campaigns[index]._id%>/edit">Edit</a>
+
+                  
+                   <form class="d-inline"action="/social-media/<%= campaigns[index]._id %>?_method=DELETE" method="post">
+                     <button class="btn btn-danger">Delete</button>
+                   </form>    
+               </td>
+            </tr>
+            <% } %>
+            
+         </tbody>
+       </table>
+   </div>
+
+
+
+     

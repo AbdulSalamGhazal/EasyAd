@@ -1,0 +1,104 @@
+<% layout('layouts/boilerplate') %>
+
+<form class="row g-3 mb-3" action="/social-media/<%= campaign._id %>?_method=PUT" method="post">
+
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="campaign[name]" value="<%= campaign.name %> ">
+    </div>
+    <div class="col-md-6 " >
+        <label for="goal" class="form-label">Goal</label>
+      <input disabled type="text" class="form-control" id="goal" name="campaign[goal]" value="<%= campaign.goal %> ">
+    </div>
+
+
+    <label class="form-label">Platforms</label>
+    
+    <div>
+        <% if ( campaign.platform.includes('google')) { %>                        
+           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="">
+           <% } %>
+        <% if ( campaign.platform.includes('meta')) { %>                        
+           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt="">
+        <% } %>
+        <% if ( campaign.platform.includes('snapchat')) { %>                        
+           <img class=" mx-5 mr-2 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt="">
+        <% } %>
+        <% if ( campaign.platform.includes('tiktok')) { %>                        
+           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="">
+        <% } %>
+        <p class="mt-3 bg-dark text-warning">You can't add a platform after Campagin creation.</p>
+     </div>
+
+   
+
+    <div class=" col-md-6">
+        <label class="form-label" for="budget">Budget</label>
+        <div class="input-group">
+            <input type="text" id="budget" name="campaign[budget]" class="form-control" value="<%= campaign.budget %> " >
+            <span class="input-group-text">$</span>
+        </div>
+      </div> 
+
+    <div class="col-md-3">
+      <label for="start_date" class="form-label">Start</label>
+      <input type="date" disabled name="campaign[start_date]" class="form-control" id="start_date" value="<%= campaign.start_date %>" >
+    </div>
+
+    <div class="col-md-3">
+      <label for="end_date" class="form-label">End</label>
+      <input type="date" name="campaign[end_date]" class="form-control" id="end_date" value="<%= campaign.end_date %>">
+    </div>
+    
+    <div class="col-md-12">
+        <label for="input-group" class="form-label">Audiunce</label>
+        <div class="input-group">
+          <span class="input-group-text">Country</span>
+          <input disabled type="text" class="form-control" id="country" name="campaign[country]" value="<%= campaign.country %> " >
+          
+          <span class="input-group-text">Interest</span>
+          <input disabled type="text" class="form-control" id="interest" name="campaign[interest]" value="<%= campaign.interest %> " >
+          
+            <span class="input-group-text">Age</span>
+            <select class="form-select" multiple size="3"  name="campaign[age]">
+              <option selected>All</option>
+              <option value="13-17">13-17</option>
+              <option value="18-24">18-24</option>
+              <option value="25-34">25-34</option>
+              <option value="35-44">35-44</option>
+              <option value="45-54">45-54</option>
+              <option value="55+">55+</option>
+            </select>
+
+            <span class="input-group-text">Gender</span>
+            <select class="form-select" size="3"  name="campaign[gender]">
+              <option selected>male/female</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="headline" class="form-label">Headline</label>
+      <input type="text" class="form-control" id="headline" name="campaign[headline]" value="<%= campaign.headline %> ">
+    </div>
+    <div class="col-md-3">
+      <label for="image" class="form-label">Image Link</label>
+      <input type="url" class="form-control" id="image" name="campaign[image]" value="<%= campaign.image %> ">
+    </div>
+    <div class="col-md-3">
+        <label for="CTA" class="form-label">Call To Actoin</label>
+        <input type="text" class="form-control" id="CTA" name="campaign[CTA]" value="<%= campaign.CTA %> ">
+      </div>
+    <div class="col-md-3">
+      <label for="URL" class="form-label">URL</label>
+      <input type="url" class="form-control" id="URL" name="campaign[URL]" placeholder="Optional" value="<%= campaign.URL %> ">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-success">Edit</button>
+    </div>
+  </form>
+  
