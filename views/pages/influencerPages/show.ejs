@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-5">
+        <img src="<%= influencer.image %>" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h5 class="card-title"><%= influencer.name %></h5>
+          <p class="card-text"><%= influencer.Desc %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= influencer.field%></li>
+            <li class="list-group-item">On <%= influencer.platform%>.</li>
+            <li class="list-group-item"><%= influencer.followers%> Followers</li>
+            <li class="list-group-item"><%= influencer.rangeOfCost%>$ per Ad</li>
+            <li class="list-group-item"><%= influencer.gender%> | <%= influencer.age%> years old | <%= influencer.nationality%> | in <%= influencer.location%> </li>
+            <li class="list-group-item"><%= influencer.availableDates%></li>
+            <li class="list-group-item"><%= influencer.accounts%></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="/influencer/<%=influencer._id%>/contact" class="card-link btn btn-dark ">Contact With</a>

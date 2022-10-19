@@ -1,42 +1,46 @@
 <% layout('layouts/boilerplate') %>
 
-<form class="row g-3 mb-3" action="/social-media" method="post">
+<form  class="row g-3 mb-3 needs-validation" novalidate action="/social-media" method="post" >
 
     <div class="col-md-6">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="campaign[name]">
+      <input required type="text" class="form-control" id="name" name="campaign[name]">
+      <div class="valid-feedback">Looks good!</div>
+      
+    </div>
+      
     </div>
     <div class="col-md-6 " >
         <label for="goal" class="form-label">Goal</label>
-      <select id="goal" class="form-select" name="campaign[goal]">
-        <option selected>Choose...</option>
+      <select required id="goal" class="form-select" name="campaign[goal]">
+        <option value="" selected>Choose...</option>
         <option >Visits</option>
         <option >purchase</option>
         <option >Install</option>
         <option >Views</option>
-        <option >...</option>
       </select>
+      <div class="valid-feedback">Looks good!</div>
+
     </div>
 
 
     <label class="form-label">Platforms</label>
-    <div class="col-md-3">    
-      <input class="form-check-input" type="checkbox" id="google" name="campaign[platform]" value="google" />
-      <label class="fs-2"for="google"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt=""> Google</label>
-  </div>
-  <div class="col-md-3">
-    <input class="form-check-input" type="checkbox" id="meta" name="campaign[platform]" value="meta" />
-    <label class="fs-2" for="meta"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt=""> Meta</label>
-  </div>
-  <div class="col-md-3">
-  
-    <input class="form-check-input" type="checkbox" id="snapchat" name="campaign[platform]" value="snapchat" />
-    <label class="fs-2"for="snapchat"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt=""> Snapchat</label>
-  </div>
-  <div class="col-md-3">
-    <input  class="form-check-input" type="checkbox"  id="tiktok" name="campaign[platform]"value="tiktok" />
-    <label class="fs-2"for="tiktok"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt=""> Tiktok</label>
-  </div>
+      <div class="col-md-3">    
+        <input class="form-check-input" type="checkbox" id="google" name="campaign[platform]" value="google" />
+        <label class="fs-2"for="google"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt=""> Google</label>
+      </div>
+      <div class="col-md-3">
+        <input class="form-check-input" type="checkbox" id="meta" name="campaign[platform]" value="meta" />
+        <label class="fs-2" for="meta"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt=""> Meta</label>
+      </div>
+      <div class="col-md-3">
+        <input  class="form-check-input" type="checkbox" id="snapchat" name="campaign[platform]" value="snapchat" />
+        <label class="fs-2"for="snapchat"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt=""> Snapchat</label>
+      </div>
+      <div class="col-md-3">
+        <input  class="form-check-input" type="checkbox"  id="tiktok" name="campaign[platform]"value="tiktok" />
+        <label class="fs-2"for="tiktok"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt=""> Tiktok</label>
+    </div>
 
    
 
@@ -46,14 +50,18 @@
     <div class=" col-md-6">
         <label class="form-label" for="budget">Budget</label>
         <div class="input-group">
-          <input type="text" id="budget" name="campaign[budget]" class="form-control">
+          <input required type="text" id="budget" name="campaign[budget]" class="form-control">
           <span class="input-group-text">$</span>
+          <div class="valid-feedback">Looks good!</div>
+
         </div>
       </div> 
 
     <div class="col-md-3">
       <label for="start_date" class="form-label">Start</label>
-      <input type="date"  name="campaign[start_date]" class="form-control" id="start_date">
+      <input type="date"  required name="campaign[start_date]" class="form-control" id="start_date">
+      <div class="valid-feedback">Looks good!</div>
+
     </div>
 
     <div class="col-md-3">
@@ -66,43 +74,39 @@
         <div class="input-group">
           <span class="input-group-text">Country</span>
           <select class="form-select" multiple size="3"  name="campaign[country]">
-            <option selected>All</option>
-            <option value="Saudi Arabia">Saudi Arabia</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Qatar">Qatar</option>
-            <option value="Bahrain">Bahrain</option>
-            <option value="Oman">Oman</option>
+            <option selected value="Saudi Arabia">Saudi Arabia</option>
+            <option selected value="United Arab Emirates">United Arab Emirates</option>
+            <option selected value="Qatar">Qatar</option>
+            <option selected value="Bahrain">Bahrain</option>
+            <option selected value="Oman">Oman</option>
           </select>
           <span class="input-group-text">Interest</span>
           <select class="form-select" multiple size="3"  name="campaign[interest]">
-            <option selected>General</option>
-            <option value="Sportt">Sportt</option>
-            <option value="Beauty">Beauty</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Health">Health</option>
-            <option value="Politics">Politics</option>
-            <option value="Foods">Foods</option>
-            <option value="Games">Games</option>
-            <option value="Travel">Travel</option>
-            <option value="Apps">Apps</option>
-            <option value="Pets">Pets</option>
+            <option selected value="Sportt">Sportt</option>
+            <option selected value="Beauty">Beauty</option>
+            <option selected value="Fashion">Fashion</option>
+            <option selected value="Health">Health</option>
+            <option selected value="Politics">Politics</option>
+            <option selected value="Foods">Foods</option>
+            <option selected value="Games">Games</option>
+            <option selected value="Travel">Travel</option>
+            <option selected value="Apps">Apps</option>
+            <option selected value="Pets">Pets</option>
           </select>
             <span class="input-group-text">Age</span>
             <select class="form-select" multiple size="3"  name="campaign[age]">
-              <option selected>All</option>
-              <option value="13-17">13-17</option>
-              <option value="18-24">18-24</option>
-              <option value="25-34">25-34</option>
-              <option value="35-44">35-44</option>
-              <option value="45-54">45-54</option>
-              <option value="55+">55+</option>
+              <option selected value="13-17">13-17</option>
+              <option selected value="18-24">18-24</option>
+              <option selected value="25-34">25-34</option>
+              <option selected value="35-44">35-44</option>
+              <option selected value="45-54">45-54</option>
+              <option selected value="55+">55+</option>
             </select>
 
             <span class="input-group-text">Gender</span>
-            <select class="form-select" size="3"  name="campaign[gender]">
-              <option selected>male/female</option>
-              <option value="male">male</option>
-              <option value="female">female</option>
+            <select class="form-select" multiple size="3"  name="campaign[gender]">
+              <option selected value="male">male</option>
+              <option selected value="female">female</option>
             </select>
 
         </div>
@@ -110,11 +114,13 @@
 
     <div class="col-md-3">
       <label for="headline" class="form-label">Headline</label>
-      <input type="text" class="form-control" id="headline" name="campaign[headline]">
+      <input type="text" required class="form-control" id="headline" name="campaign[headline]">
+      <div class="valid-feedback">Looks good!</div>
     </div>
     <div class="col-md-3">
       <label for="image" class="form-label">Image Link</label>
-      <input type="url" class="form-control" id="image" name="campaign[image]">
+      <input required type="url" class="form-control" id="image" name="campaign[image]">
+      <div class="valid-feedback">Looks good!</div>
     </div>
     <div class="col-md-3">
       <label for="CTA" class="form-label">Call To Action</label>
@@ -139,4 +145,3 @@
       <button type="submit" class="btn btn-success">Create</button>
     </div>
   </form>
-  <div></div>

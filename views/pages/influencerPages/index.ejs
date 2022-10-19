@@ -1,0 +1,101 @@
+<% layout('layouts/boilerplate') %>
+<form class="row g-3 mb-3">
+
+<div class="col-md-4">
+    <label for="name" class="form-label">Name</label>
+    <input value="" type="text" class="form-control" id="name" name="name">
+  </div>
+  <div class="col-md-4 " >
+        <label for="field" class="form-label">Field</label>
+        <select id="field" class="form-select" name="field">
+            <option value="" selected>Choose...</option>
+            <option >Art</option>
+            <option >Business</option>
+            <option >Beaty</option>
+            <option >Car</option>
+            <option >Fashion</option>
+            <option >Game</option>
+            <option >Cook</option>
+            <option >Comdey</option>
+            <option >Sport</option>
+            <option >Song</option>
+            <option >Tech</option>
+            <option >TV</option>
+            <option >Health</option>
+            <option >Photographic</option>
+            <option >Rap</option>
+        </select>
+  </div>
+  <div class="col-md-4 " >
+    <label for="platform" class="form-label">Platform</label>
+    <select id="platform" class="form-select" name="platform">
+        <option value="" selected>Choose...</option>
+        <option >YouTube</option>
+        <option >Snapchat</option>
+        <option >Tiktok</option>
+        <option >TV</option>
+        <option >Instagram</option>
+        <option >FaceBook</option>
+    </select>
+</div>
+<div class="col-md-4 " >
+    <label for="followers" class="form-label">Followers</label>
+    <select id="followers" class="form-select" name="followers">
+        <option value="" selected>Choose...</option>
+        <option value="1000">Less than 1K</option>
+        <option value="10000">1K -> 10K</option>
+        <option value="50000">10K -> 50K</option>
+        <option value="200000">50K -> 200K</option>
+        <option value="1000000">200K -> 1M</option>
+        <option value="10000000">1M -> 10M</option>
+        <option value="100000000">More than 10M</option>
+    </select>
+</div>
+<div class="col-md-4 " >
+    <label for="rangeOfCost" class="form-label">Range Of Cost</label>
+    <select id="rangeOfCost" class="form-select" name="rangeOfCost">
+        <option value="" selected>Choose...</option>
+        <option value="1000">Less than 1K</option>
+        <option value="5000">1K -> 5K</option>
+        <option value="10000">5K -> 10K</option>
+        <option value="20000">10K -> 20K</option>
+        <option value="50000">20K -> 50K</option>
+        <option value="100000">50K -> 100K</option>
+        <option value="1000000">More than 100K</option>
+    </select>
+</div>
+<div class="col-md-4">
+    <label for="date" class="form-label">Date</label>
+    <input value="" type="date"  name="date" class="form-control" id="date">
+  </div>
+<div class="col-3">
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a class="btn btn-warning" href="/influencer">Reset</a>
+  </div>
+
+</form>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% for( let index = 0; index < influencers.length; index++ ) { %>
+    <div class="col">
+      <div class="card h-100">
+        <img src="<%= influencers[index].image%>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title"><%= influencers[index].name%></h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= influencers[index].field%></li>
+            <li class="list-group-item">On <%= influencers[index].platform%>.</li>
+            <li class="list-group-item"><%= influencers[index].followers%> Followers</li>
+            <li class="list-group-item"><%= influencers[index].rangeOfCost%>$ per Ad</li>
+        </ul>
+        <div class="card-footer">
+            <a href="/influencer/<%=influencers[index]._id%>" class="card-link btn btn-info me-auto">Show More</a>
+            <a href="/influencer/<%=influencers[index]._id%>/contact" class="card-link btn btn-dark ">Contact With</a>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+</div>

@@ -1,4 +1,9 @@
 <% layout('layouts/boilerplate') %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  You can't Edit some fields after Campagin creation.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+</div>
+
 
 <form class="row g-3 mb-3" action="/social-media/<%= campaign._id %>?_method=PUT" method="post">
 
@@ -13,23 +18,24 @@
 
 
     <label class="form-label">Platforms</label>
-    
-    <div>
-        <% if ( campaign.platform.includes('google')) { %>                        
-           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="">
-           <% } %>
-        <% if ( campaign.platform.includes('meta')) { %>                        
-           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt="">
-        <% } %>
-        <% if ( campaign.platform.includes('snapchat')) { %>                        
-           <img class=" mx-5 mr-2 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt="">
-        <% } %>
-        <% if ( campaign.platform.includes('tiktok')) { %>                        
-           <img class=" mx-5 img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="">
-        <% } %>
-        <p class="mt-3 bg-dark text-warning">You can't add a platform after Campagin creation.</p>
-     </div>
+    <div class="col-md-3">    
+      <input disabled <%=campaign.platform.includes("google") ? "checked": "" %> class="form-check-input" type="checkbox" id="google" name="campaign[platform]" value="google" />
+      <label class="fs-2"for="google"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt=""> Google</label>
+    </div>
+    <div class="col-md-3">
+      <input disabled <%=campaign.platform.includes("meta") ? "checked": "" %> class="form-check-input" type="checkbox" id="meta" name="campaign[platform]" value="meta" />
+      <label class="fs-2" for="meta"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/6033/6033716.png" alt=""> Meta</label>
+    </div>
+    <div class="col-md-3">
+      <input  disabled <%=campaign.platform.includes("snapchat") ? "checked": "" %> class="form-check-input" type="checkbox" id="snapchat" name="campaign[platform]" value="snapchat" />
+      <label class="fs-2"for="snapchat"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/2111/2111616.png" alt=""> Snapchat</label>
+    </div>
+    <div class="col-md-3">
+      <input disabled <%=campaign.platform.includes("tiktok") ? "checked": "" %> class="form-check-input" type="checkbox"  id="tiktok" name="campaign[platform]"value="tiktok" />
+      <label class="fs-2"for="tiktok"><img class=" img-fluid"width="70px" height="70px" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt=""> Tiktok</label>
+  </div>
 
+    
    
 
     <div class=" col-md-6">
@@ -51,34 +57,51 @@
     </div>
     
     <div class="col-md-12">
-        <label for="input-group" class="form-label">Audiunce</label>
-        <div class="input-group">
-          <span class="input-group-text">Country</span>
-          <input disabled type="text" class="form-control" id="country" name="campaign[country]" value="<%= campaign.country %> " >
-          
-          <span class="input-group-text">Interest</span>
-          <input disabled type="text" class="form-control" id="interest" name="campaign[interest]" value="<%= campaign.interest %> " >
-          
-            <span class="input-group-text">Age</span>
-            <select class="form-select" multiple size="3"  name="campaign[age]">
-              <option selected>All</option>
-              <option value="13-17">13-17</option>
-              <option value="18-24">18-24</option>
-              <option value="25-34">25-34</option>
-              <option value="35-44">35-44</option>
-              <option value="45-54">45-54</option>
-              <option value="55+">55+</option>
-            </select>
 
-            <span class="input-group-text">Gender</span>
-            <select class="form-select" size="3"  name="campaign[gender]">
-              <option selected>male/female</option>
-              <option value="male">male</option>
-              <option value="female">female</option>
-            </select>
 
-        </div>
-    </div>
+      <label for="input-group" class="form-label">Audiunce</label>
+      <div class="input-group">
+        <span class="input-group-text">Country</span>
+        <select class="form-select" multiple size="3"  name="campaign[country]">
+          <option value="Saudi Arabia" <%=campaign.country.includes("Saudi Arabia") ? "selected": "" %> >Saudi Arabia</option>
+          <option value="United Arab Emirates" <%=campaign.country.includes("United Arab Emirates") ? "selected": "" %> >United Arab Emirates</option>
+          <option value="Qatar" <%=campaign.country.includes("Qatar") ? "selected": "" %> >Qatar</option>
+          <option value="Bahrain" <%=campaign.country.includes("Bahrain") ? "selected": "" %> >Bahrain</option>
+          <option value="Oman" <%=campaign.country.includes("Oman") ? "selected": "" %> >Oman</option>
+        </select>
+        <span class="input-group-text">Interest</span>
+        <select class="form-select" multiple size="3"  name="campaign[interest]">
+          <option value="General" <%=campaign.interest.includes("General") ? "selected": "" %>>General</option>
+          <option value="Sportt"<%=campaign.interest.includes("Sportt") ? "selected": "" %>>Sportt</option>
+          <option value="Beauty"<%=campaign.interest.includes("Beauty") ? "selected": "" %>>Beauty</option>
+          <option value="Fashion"<%=campaign.interest.includes("Fashion") ? "selected": "" %>>Fashion</option>
+          <option value="Health"<%=campaign.interest.includes("Health") ? "selected": "" %>>Health</option>
+          <option value="Politics"<%=campaign.interest.includes("Politics") ? "selected": "" %>>Politics</option>
+          <option value="Foods"<%=campaign.interest.includes("Foods") ? "selected": "" %>>Foods</option>
+          <option value="Games"<%=campaign.interest.includes("Games") ? "selected": "" %>>Games</option>
+          <option value="Travel"<%=campaign.interest.includes("Travel") ? "selected": "" %>>Travel</option>
+          <option value="Apps"<%=campaign.interest.includes("Apps") ? "selected": "" %>>Apps</option>
+          <option value="Pets"<%=campaign.interest.includes("Pets") ? "selected": "" %>>Pets</option>
+        </select>
+          <span class="input-group-text">Age</span>
+          <select class="form-select" multiple size="3"  name="campaign[age]">
+            <option value="13-17"<%=campaign.age.includes("13-17") ? "selected": "" %>>13-17</option>
+            <option value="18-24"<%=campaign.age.includes("18-24") ? "selected": "" %>>18-24</option>
+            <option value="25-34"<%=campaign.age.includes("25-34") ? "selected": "" %>>25-34</option>
+            <option value="35-44"<%=campaign.age.includes("35-44") ? "selected": "" %>>35-44</option>
+            <option value="45-54"<%=campaign.age.includes("45-54") ? "selected": "" %>>45-54</option>
+            <option value="55+"<%=campaign.age.includes("55+") ? "selected": "" %>>55+</option>
+          </select>
+
+          <span class="input-group-text">Gender</span>
+          <select class="form-select" multiple size="3"  name="campaign[gender]">
+            <option value="male"<%=campaign.gender.includes("male") ? "selected": "" %>>male</option>
+            <option value="female"<%=campaign.gender.includes("female") ? "selected": "" %>>female</option>
+          </select>
+
+      </div>
+  </div>
+
 
     <div class="col-md-3">
       <label for="headline" class="form-label">Headline</label>
