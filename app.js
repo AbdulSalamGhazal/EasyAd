@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const Campaign = require('./models/campaign')
 const Influencer = require('./models/influencer')
+const Ad  = require('./models/ad')
 const session = require("express-session");
 const flash = require("connect-flash")
 
@@ -117,7 +118,6 @@ async function filterSearch(search){
                         if( !rangeOfCost || influencer.rangeOfCost <= rangeOfCost) {
                             if( !date || influencer.availableDates.includes(date)){
                                 filtered.push(influencer)
-
                             }
                         }
 
@@ -144,6 +144,17 @@ app.get('/influencer' , async(req,res) =>{
     }
 
 })
+app.get('/influencer/ads' , async(req,res) =>{
+    const ads = await Ad.find({})
+    res.render('pages/influencerPages/ads',{ads})
+})
+app.post('/influencer/ads' , async(req,res) =>{
+    const ad = new Ad(req.body.ad);
+    await ad.save()
+    req.flash("success","Successfully made a new campaign!")
+    res.redirect('/influencer/ads')
+})
+
 app.get('/influencer/:id' , async(req,res) => {
     const influencer = await Influencer.findById(req.params.id)
     if(!influencer){
@@ -160,12 +171,7 @@ app.get('/influencer/:id/contact' , async(req,res) => {
     }
     res.render('pages/influencerPages/contact' , {influencer})
 })
-app.get('/influencer/ads' , (req,res) =>{
-    res.render('pages/influencerPages/contact')
-})
-app.post('/influencer/ads' , (req,res) =>{
-    
-})
+
 
 app.all('*' , (req,res) => {
     res.render('pages/notfound')

@@ -7,11 +7,18 @@
 
 <form class="row g-3 mb-3" action="/social-media/<%= campaign._id %>?_method=PUT" method="post">
 
-    <div class="col-md-6">
+    <div class="col-md-2">
+      <label for="status" class="form-label">Status</label>
+      <select required id="status" class="form-select" name="campaign[status]">
+        <option value="true" <%=campaign.status == 'true' ? "selected": "" %> >On</option>
+        <option value="false" <%=campaign.status == 'true' ? "selected": "" %> >Off</option>
+      </select>
+    </div>
+    <div class="col-md-5">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" name="campaign[name]" value="<%= campaign.name %> ">
     </div>
-    <div class="col-md-6 " >
+    <div class="col-md-5 " >
         <label for="goal" class="form-label">Goal</label>
       <input disabled type="text" class="form-control" id="goal" name="campaign[goal]" value="<%= campaign.goal %> ">
     </div>

@@ -1,25 +1,71 @@
 <% layout('layouts/boilerplate') %>
+<form class="row g-3 mb-3">
 
-<div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-5">
-        <img src="<%= influencer.image %>" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-7">
-        <div class="card-body">
-          <h5 class="card-title"><%= influencer.name %></h5>
-          <p class="card-text"><%= influencer.Desc %></p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= influencer.field%></li>
-            <li class="list-group-item">On <%= influencer.platform%>.</li>
-            <li class="list-group-item"><%= influencer.followers%> Followers</li>
-            <li class="list-group-item"><%= influencer.rangeOfCost%>$ per Ad</li>
-            <li class="list-group-item"><%= influencer.gender%> | <%= influencer.age%> years old | <%= influencer.nationality%> | in <%= influencer.location%> </li>
-            <li class="list-group-item"><%= influencer.availableDates%></li>
-            <li class="list-group-item"><%= influencer.accounts%></li>
-        </ul>
-        </div>
-      </div>
-    </div>
+<div class="col-md-5">
+  <img src="<%= influencer.image %>" class="img-fluid rounded-start rounded" alt="...">
+</div>
+<div class="col-md-7">
+  <h1 class="card-title"><%= influencer.name %></h1>
+  <p class="card-text"><%= influencer.Desc %></p>
+    <h3 class="my-3 text-danger"><%= influencer.field%> specialist On <%= influencer.platform%>. </h3>
+
+    <h3 class="list-group-item text-center text-success mb-3"><%= influencer.rangeOfCost%>$ per Ad and has <%= influencer.followers%> Followers</h3>
+
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Country</th>
+          <th scope="col">Location</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= influencer.age%></td>
+          <td><%= influencer.gender%></td>
+          <td><%= influencer.nationality%></td>
+          <td><%= influencer.location%></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Available Dates</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for( let index = 0; index < influencer.availableDates.length; index++ ) { %>     
+          <tr>
+            <td><%= influencer.availableDates[index++]%> </td>
+            <td><%= influencer.availableDates[index++]%> </td>
+            <td><%= influencer.availableDates[index]%> </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <% for( let index = 0; index < influencer.accounts.length; index++ ) { %>
+      <% if (influencer.accounts[index].includes('youtube')) { %>
+        <a class="btn btn-outline-danger mx-1" href="><%= influencer.accounts[index]%>"> YouTube  </a>
+      <% } else if(influencer.accounts[index].includes('snapchat')){ %>
+        <a class="btn btn-outline-warning mx-1" href="><%= influencer.accounts[index]%>"> Snapchat </a>
+      <% } else if(influencer.accounts[index].includes('facebook')){ %>
+        <a class="btn btn-outline-primary mx-1" href="><%= influencer.accounts[index]%>"> Facebook   </a>
+      <% } else if(influencer.accounts[index].includes('instagram')){ %>
+        <a class="btn btn-outline-secondary mx-1" href="><%= influencer.accounts[index]%>"> Instagram  </a>
+      <% } else if(influencer.accounts[index].includes('tiktok')){ %>
+        <a class="btn btn-outline-dark mx-1" href="><%= influencer.accounts[index]%>"> TikTok </a>
+      <% } else { %>
+        <a class="btn btn-outline-success mx-1" href="><%= influencer.accounts[index]%>"> Account </a>
+      <% } %>
+    <% } %>
   </div>
-  <a href="/influencer/<%=influencer._id%>/contact" class="card-link btn btn-dark ">Contact With</a>
+</div>
+<a href="/influencer/<%=influencer._id%>/contact" class="card-link btn btn-dark ">Contact With</a>

@@ -32,13 +32,35 @@
               <li class="list-group-item"><%= campaign.gender %> </li>
             </ul>
         </div>
-        <div class="card" >
-            <h3 class="card-header ps-3 text-bg-warning">Results</h3>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item "><span class="fw-bold">Impression:</span> <%= campaign.impression %>   </li>
-              <li class="list-group-item "><span class="fw-bold">Event A:</span> <%= campaign.event_A %>  </li>
-              <li class="list-group-item "><span class="fw-bold">Event B:</span> <%= campaign.event_B %> </li>
-            </ul>
+        <div class="card bg-warning " >
+            <h3 class="card-header ps-3 ">Results</h3>
+                <table class="table bg-white">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Cost per one</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Impression</th>
+                            <td><%= campaign.impression %></td>
+                            <td><%= Math.round(campaign.spend/campaign.impression * 100) / 100 %>$</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Event A</th>
+                            <td><%= campaign.event_A %></td>
+                            <td><%= Math.round(campaign.spend/campaign.event_A * 100) / 100 %>$</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Event B</th>
+                            <td><%= campaign.event_B %></td>
+                            <td><%= Math.round(campaign.spend/campaign.event_B * 100) / 100 %>$</td>
+                          </tr>
+                    </tbody>
+                </table>
+                
         </div>
 
 
@@ -46,12 +68,12 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title"><%= campaign.headline %></h2>
+                <h1 class="card-title text-center "><%= campaign.headline %></h1>
             </div>
+            <hr>
             <img src="<%= campaign.image %>" alt=""class="card-img-top img-fluid">
-            <div class="card-body">
-                <li class="list-group-item"><%= campaign.CTA %></li>
-                <a href="<%= campaign.URL %>" class="card-link"><%= campaign.URL %></a>
+            <div class="card-body d-grid gap-2">
+                <a href="<%= campaign.URL %>" class="card-link btn btn-outline-dark px-auto btn-lg"><%= campaign.CTA %></a>
 
             </div>
         </div>
@@ -59,10 +81,11 @@
 
 
     </div>
+
 </div>
-<div class="col-3 mb-5 ms-auto">
-    <a class=" btn btn-info btn-lg" href="/social-media/<%=campaign._id%>/edit">Edit</a>         
-        <form class="d-inline"action="/social-media/<%= campaign._id %>?_method=DELETE" method="post">
-            <button class="btn btn-danger btn-lg">Delete</button>
-        </form> 
+<div  class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+    <a class=" btn btn-info btn-lg px-5" href="/social-media/<%=campaign._id%>/edit">Edit</a>         
+    <form class="d-inline"action="/social-media/<%= campaign._id %>?_method=DELETE" method="post">
+        <button class="btn btn-danger btn-lg px-5">Delete</button>
+    </form>        
 </div>

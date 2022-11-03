@@ -1,1 +1,64 @@
-<h1>Ads</h1>
+<% layout('layouts/boilerplate') %>
+<hr>
+<% for ( ad of ads) { %> 
+    <div class="card w-100 mb-3">
+        <div class="card-body">
+        <h2 class="card-title "><%= ad.Iname %>   </h2>
+        <p class="card-text"><%= ad.details %></p>
+        <div class="table-responsive ">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"><%= ad.cost %>$</th>
+                <th scope="col">In <%= ad.platform %></th>
+                <th scope="col">On <%= ad.date %></th>
+                <th scope="col">For <%= ad.brandname%></th>
+                <th scope="col">To <%= ad.website %></th>
+                <th scope="col">Using <%= ad.materials %></th>
+                <% if (ad.product) { %>
+                
+                    <th scope="col">Product: <%= ad.product %></th>
+                <% } %>
+              </tr>
+            </thead>
+          
+          </table>
+        </div>
+        <% if (ad.status === 'Review') { %>
+            <span class="  text-bg-warning p-2 h5 d-block text-center"><%= ad.status %> </span>
+        <% } else if (ad.status === 'Approved' ){ %>    
+            <span class="text-bg-success p-2 h5 d-block text-center"><%= ad.status %> </span>
+        <% } else if (ad.status === 'Declined' ) {%>    
+            <span class="text-bg-danger p-2 h5 d-block text-center"><%= ad.status %> </span>
+        <% } %> 
+        <% if (ad.status === 'Approved' ) { %>
+          <table class="table bg-white">
+            <thead>
+              <tr>
+                <th scope="col">Impressions</th>
+                <th scope="col">Clicks</th>
+                <th scope="col">Event A</th>
+                <th scope="col">Event B</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%=  ad.impression %> </td>
+                    <td><%=  ad.clicks %> </td>
+                    <td><%=  ad.event_A %> </td>
+                    <td><%=  ad.event_B %> </td>
+
+                </tr>
+                
+            </tbody>
+           </table>
+        <% } %>
+        <% if (ad.status === 'Declined' ) { %>
+          <h5> Reason: <%= ad.dec_message %> </h5>
+        <% } %>
+        
+    </div>
+    
+</div>
+<hr>
+<% } %> 

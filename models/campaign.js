@@ -18,7 +18,7 @@ const campaignSchema = new Schema({
     image: String,
     URL: String,
     CTA: String,
-    // below data not from user
+    // below data is not from user
     status:{
         type: Boolean,
         default: true,
