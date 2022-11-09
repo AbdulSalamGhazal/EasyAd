@@ -1,7 +1,85 @@
-<% layout('layouts/boilerplate') %>
-<div class="bg-dark px-auto">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyAd - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"/>
+    <style>
+        body{
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url("https://gulfbusiness.com/wp-content/uploads/2022/01/GettyImages-1189857966-800x533-1.jpeg");
+            background-size: cover;
+            background-position: center;
+            text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+        }
+
+        .cover-container {
+            max-width: 60vw;
+        }
+
+        .nav-link {
+            padding: 0.25rem 0;
+            font-weight: 700;
+            color: rgba(255, 0, 0, 0.5);
+            margin-left: 1rem;
+            border-bottom: 0.25rem solid transparent;
+        }
+
+        .nav-link:hover{
+            color: rgba(255, 0, 0, 0.5);
+            border-bottom-color:rgba(255, 0, 0, 0.5);
+        }
+
+        .nav-link.active {
+            color: white;
+            border-bottom-color:white;
+
+        }
+
+        .btn-secondary, .btn-secondary:hover{
+            color: #333;
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0 fs-2">EasyAd</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link fs-4 " href="/dashboard">Dashboard</a>
+                    <a class="nav-link fs-4" href="/social-media">Social Media</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link fs-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Influencer
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/influencer">Influencers</a></li>
+                        <li><a class="dropdown-item" href="/influencer/ads">Advertisments</a></li>
+                      </ul>
+                    </li>
+                    
+            
+                </nav>
+            </div>
+        </header>
+     
+        
+        <footer class="mt-auto text-white-50">
+            <p class="lead fs-1 text-white "> make your advertising experience easier!</p>
+            <p>&copy; 2022 by Abdulsalam & Abdulqader & Hani </p>
+        </footer>
 
 
-    <h1 class="text-danger shadow-lg" style="font-size: 18rem; text-align: center; padding: 70px 50px; ">EasyAD</h1> 
-    <p  class="text-light" style="font-size: 3rem; text-align: center; padding: 20px 50px; ">make your advertising experience easier!</p>
-</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
